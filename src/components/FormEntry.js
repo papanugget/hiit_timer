@@ -4,13 +4,13 @@ import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
 import SaveIcon from '@material-ui/icons/Save';
 import FastForward from '@material-ui/icons/FastForward';
 
 const useStyles = makeStyles(theme => ({
     buttonRow: {
        textAlign: 'center',
+       marginBottom: theme.spacing(2),
     },
     button: {
         margin: theme.spacing(1),
@@ -35,7 +35,10 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const FormEntry = () => {
+const FormEntry = (props) => {
+    const handleSave = props.handleSave;
+    const handleGo = props.handleGo;
+    console.log(handleSave);
     const classes = useStyles();
     return(
         <Paper>
@@ -70,11 +73,11 @@ const FormEntry = () => {
                     />
                 </div>
                 <div className={classes.buttonRow}>
-                    <Button variant="contained" className={classes.button} color="primary" size="large">
+                    <Button variant="contained" className={classes.button} color="primary" size="large" onClick={handleSave}>
                         <SaveIcon className={classes.extendedIcon} />
                         Save
                     </Button>
-                    <Button variant="contained" className={classes.button} color="secondary" size="large">
+                    <Button variant="contained" className={classes.button} color="secondary" size="large" onClick={handleGo}>
                         <FastForward className={classes.extendedIcon} />
                         Go!
                     </Button>
